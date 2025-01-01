@@ -1,6 +1,6 @@
-import 'package:hospital_management_app/core/services/api_service.dart';
-import 'package:hospital_management_app/data/models/data_model/data.dart';
-import 'package:hospital_management_app/utils/config/env.dart';
+import 'package:tb_clinic/core/services/api_service.dart';
+import 'package:tb_clinic/data/models/data_model/data.dart';
+import 'package:tb_clinic/utils/config/env.dart';
 
 class AuthRepository {
   final ApiService apiService;

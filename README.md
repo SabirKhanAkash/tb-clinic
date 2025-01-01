@@ -1,4 +1,4 @@
-# hospital_management_app
+# tb_clinic
 
 A new Flutter project.
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hospital_management_app/core/services/api_service.dart';
-import 'package:hospital_management_app/core/services/log_service.dart';
-import 'package:hospital_management_app/data/repositories/remote/auth_repository.dart';
-import 'package:hospital_management_app/data/state/auth_state.dart';
-import 'package:hospital_management_app/ui/auth/login_screen.dart';
-import 'package:hospital_management_app/viewmodels/auth_view_model.dart';
+import 'package:tb_clinic/core/services/api_service.dart';
+import 'package:tb_clinic/core/services/log_service.dart';
+import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
+import 'package:tb_clinic/data/state/auth_state.dart';
+import 'package:tb_clinic/ui/auth/login_screen.dart';
+import 'package:tb_clinic/viewmodels/auth_view_model.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -48,13 +48,13 @@ class _MyAppState extends State<MyApp> {
         )
       ],
       child: MaterialApp(
-        title: 'Flutter MVVM Starter',
+        title: 'TB Clinic',
         theme: ThemeData(
           fontFamily: ('inter'),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const LoginScreen(title: 'Flutter MVVM Starter'),
+        home: const LoginScreen(title: 'TB Clinic'),
       ),
     );
   }

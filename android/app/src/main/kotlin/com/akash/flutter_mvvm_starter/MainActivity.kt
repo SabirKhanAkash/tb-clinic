@@ -1,4 +1,4 @@
-package com.akash.hospital_management_app
+package com.akash.tb_clinic
 
 import io.flutter.embedding.android.FlutterActivity
 

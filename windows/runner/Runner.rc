@@ -94,12 +94,12 @@ BEGIN
 BEGIN
         VALUE
 "CompanyName", "com.akash" "\0"
-VALUE "FileDescription", "hospital_management_app" "\0"
+VALUE "FileDescription", "tb_clinic" "\0"
 VALUE "FileVersion", VERSION_AS_STRING "\0"
-VALUE "InternalName", "hospital_management_app" "\0"
+VALUE "InternalName", "tb_clinic" "\0"
 VALUE "LegalCopyright", "Copyright (C) 2024 com.akash. All rights reserved." "\0"
-VALUE "OriginalFilename", "hospital_management_app.exe" "\0"
-VALUE "ProductName", "hospital_management_app" "\0"
+VALUE "OriginalFilename", "tb_clinic.exe" "\0"
+VALUE "ProductName", "tb_clinic" "\0"
 VALUE "ProductVersion", VERSION_AS_STRING "\0"
 END
         END

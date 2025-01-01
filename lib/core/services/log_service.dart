@@ -1,4 +1,4 @@
-import 'package:hospital_management_app/utils/config/env.dart';
+import 'package:tb_clinic/utils/config/env.dart';
 import 'package:logger/logger.dart';
 import 'dart:io';
 
