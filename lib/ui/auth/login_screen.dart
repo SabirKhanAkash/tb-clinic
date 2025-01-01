@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_starter/ui/auth/widgets/build_app_bar.dart';
-import 'package:flutter_mvvm_starter/ui/auth/widgets/build_body.dart';
+import 'package:hospital_management_app/ui/auth/widgets/build_app_bar.dart';
+import 'package:hospital_management_app/ui/auth/widgets/build_body.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, required this.title});

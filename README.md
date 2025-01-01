@@ -1,4 +1,4 @@
-# flutter_mvvm_starter
+# hospital_management_app
 
 A new Flutter project.
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_starter/data/dto/auth_dto.dart';
-import 'package:flutter_mvvm_starter/viewmodels/auth_view_model.dart';
+import 'package:hospital_management_app/data/dto/auth_dto.dart';
+import 'package:hospital_management_app/viewmodels/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
 Widget buildBody(

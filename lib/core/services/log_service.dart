@@ -1,4 +1,4 @@
-import 'package:flutter_mvvm_starter/utils/config/env.dart';
+import 'package:hospital_management_app/utils/config/env.dart';
 import 'package:logger/logger.dart';
 import 'dart:io';
 

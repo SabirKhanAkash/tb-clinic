@@ -1,6 +1,6 @@
-import 'package:flutter_mvvm_starter/core/services/api_service.dart';
-import 'package:flutter_mvvm_starter/data/models/data_model/data.dart';
-import 'package:flutter_mvvm_starter/utils/config/env.dart';
+import 'package:hospital_management_app/core/services/api_service.dart';
+import 'package:hospital_management_app/data/models/data_model/data.dart';
+import 'package:hospital_management_app/utils/config/env.dart';
 
 class AuthRepository {
   final ApiService apiService;

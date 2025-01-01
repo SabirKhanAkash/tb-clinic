@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_starter/core/services/api_service.dart';
-import 'package:flutter_mvvm_starter/core/services/log_service.dart';
-import 'package:flutter_mvvm_starter/data/repositories/remote/auth_repository.dart';
-import 'package:flutter_mvvm_starter/data/state/auth_state.dart';
-import 'package:flutter_mvvm_starter/ui/auth/login_screen.dart';
-import 'package:flutter_mvvm_starter/viewmodels/auth_view_model.dart';
+import 'package:hospital_management_app/core/services/api_service.dart';
+import 'package:hospital_management_app/core/services/log_service.dart';
+import 'package:hospital_management_app/data/repositories/remote/auth_repository.dart';
+import 'package:hospital_management_app/data/state/auth_state.dart';
+import 'package:hospital_management_app/ui/auth/login_screen.dart';
+import 'package:hospital_management_app/viewmodels/auth_view_model.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:provider/provider.dart';
 

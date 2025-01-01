@@ -1,4 +1,4 @@
-name: flutter_mvvm_starter
+name: hospital_management_app
 description: "An MVVM patterned starter for Flutter project."
 publish_to: 'none'
 version: 1.0.0+1

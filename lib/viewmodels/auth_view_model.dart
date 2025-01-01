@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_mvvm_starter/core/services/log_service.dart';
-import 'package:flutter_mvvm_starter/data/dto/auth_dto.dart';
-import 'package:flutter_mvvm_starter/data/models/data_model/data.dart';
-import 'package:flutter_mvvm_starter/data/repositories/remote/auth_repository.dart';
+import 'package:hospital_management_app/core/services/log_service.dart';
+import 'package:hospital_management_app/data/dto/auth_dto.dart';
+import 'package:hospital_management_app/data/models/data_model/data.dart';
+import 'package:hospital_management_app/data/repositories/remote/auth_repository.dart';
 import 'package:logger/logger.dart';
 
 class AuthViewModel extends ChangeNotifier {
