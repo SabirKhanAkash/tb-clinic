@@ -11,13 +11,12 @@ dependencies:
     sdk: flutter
   dio: ^5.7.0
   flutter_bloc: ^8.1.6
+  flutter_secure_storage: ^9.0.0
   flutter_splash_screen: ^3.0.0
   flutter_svg: ^2.0.16
-  http: ^1.2.2
   json_annotation: ^4.9.0
   logger: ^2.4.0
   path_provider: ^2.1.4
-  provider: ^6.1.2
   cupertino_icons: ^1.0.6
 
 dev_dependencies:

@@ -10,7 +10,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authRepository) : super(AuthInitial());
 
   void toggleObscureness(bool isObscure) {
-    emit(AuthObscurePassword(isObscure));
+    emit(AuthObscurePassword(!isObscure));
   }
 
   Future<void> login(AuthDto authDto) async {

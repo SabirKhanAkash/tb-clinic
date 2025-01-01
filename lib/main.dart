@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:tb_clinic/core/services/log_service.dart';
 import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
 import 'package:tb_clinic/ui/auth/login_screen.dart';
@@ -11,7 +10,6 @@ import 'package:tb_clinic/utils/config/env.dart';
 import 'package:tb_clinic/viewmodels/auth/cubit/auth_cubit.dart';
 
 void main() async {
-  Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   Log.init();
   runApp(const MyApp());

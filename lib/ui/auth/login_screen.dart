@@ -19,9 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context, widget.title),
-      body: buildBody(userNameController,
-          passwordController), // This trailing comma makes auto-formatting nicer
-      // for build methods.
+      body: buildBody(userNameController, passwordController),
     );
   }
 }
