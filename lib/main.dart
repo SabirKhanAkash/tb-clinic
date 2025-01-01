@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/core/services/api_service.dart';
-import 'package:tb_clinic/core/services/log_service.dart';
-import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
-import 'package:tb_clinic/data/state/auth_state.dart';
-import 'package:tb_clinic/ui/auth/login_screen.dart';
-import 'package:tb_clinic/viewmodels/auth_view_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:tb_clinic/core/services/log_service.dart';
+import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
+import 'package:tb_clinic/ui/auth/login_screen.dart';
+import 'package:tb_clinic/utils/config/app_color.dart';
+import 'package:tb_clinic/utils/config/app_text.dart';
+import 'package:tb_clinic/utils/config/env.dart';
+import 'package:tb_clinic/viewmodels/auth/cubit/auth_cubit.dart';
 
 void main() async {
   Provider.debugCheckInvalidValueType = null;
@@ -37,24 +39,21 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider<AuthViewModel>(
-          create: (context) =>
-              AuthViewModel(authRepository: AuthRepository(apiService: ApiService())),
+        BlocProvider(
+          create: (_) => AuthCubit(AuthRepository()),
         ),
-        ChangeNotifierProvider<AuthState>(
-          create: (context) => AuthState(),
-        )
       ],
       child: MaterialApp(
-        title: 'TB Clinic',
+        debugShowCheckedModeBanner: Env().envType == AppText().devEnv,
+        title: AppText().title,
         theme: ThemeData(
-          fontFamily: ('inter'),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          fontFamily: AppText().primaryFont,
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColor().primary),
           useMaterial3: true,
         ),
-        home: const LoginScreen(title: 'TB Clinic'),
+        home: LoginScreen(title: AppText().title),
       ),
     );
   }

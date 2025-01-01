@@ -1,22 +1,15 @@
 import 'package:tb_clinic/core/services/api_service.dart';
 import 'package:tb_clinic/data/models/data_model/data.dart';
-import 'package:tb_clinic/utils/config/env.dart';
 
 class AuthRepository {
-  final ApiService apiService;
+  final ApiService _apiService = ApiService();
 
-  AuthRepository({required this.apiService});
-
-  Future<Data>? login(Map<String, dynamic> body) async {
-    dynamic json;
-    try {
-      json = await apiService.callApi("POST", Uri.parse('${Env().apiBaseUrl}/auth/login'),
-          {'Content-Type': 'application/json'}, body);
-      if (json == null) throw Exception('Bad Response');
-    } catch (error) {
-      throw Exception(error.toString());
-    } finally {
-      return Data.fromJson(json);
+  Future<Data?> login(Map<String, dynamic> body) async {
+    final response = await _apiService.post('/auth/login', body);
+    if (response?.statusCode == 200) {
+      return Data.fromJson(response?.data);
+    } else {
+      throw Exception('Failed to login');
     }
   }
 }

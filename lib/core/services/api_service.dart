@@ -1,27 +1,57 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:tb_clinic/utils/config/env.dart';
 
 class ApiService {
-  Future<dynamic>? callApi(String method, Uri endpoint, dynamic headers, [dynamic body]) async {
+  final Dio _dio = Dio(
+    BaseOptions(
+      baseUrl: Env().apiBaseUrl,
+      connectTimeout: Duration(seconds: Env().connectionTimeout),
+      receiveTimeout: Duration(seconds: Env().connectionTimeout),
+    ),
+  );
+
+  Future<Response> get(String endpoint, {Map<String, dynamic>? queryParams}) async {
     try {
-      if (method == "GET") {
-        final response = await http.get(endpoint, headers: headers);
-        return jsonDecode(response.body);
-      } else if (method == "POST") {
-        final response = await http.post(endpoint, headers: headers, body: jsonEncode(body));
-        return jsonDecode(response.body);
-      } else if (method == "PUT") {
-        final response = await http.put(endpoint, headers: headers, body: jsonEncode(body));
-        return jsonDecode(response.body);
-      } else if (method == "PATCH") {
-        final response = await http.patch(endpoint, headers: headers, body: jsonEncode(body));
-        return jsonDecode(response.body);
-      } else {
-        throw Exception('Invalid Method');
-      }
-    } catch (error) {
-      throw Exception(error.toString());
+      final response = await _dio.get(endpoint, queryParameters: queryParams);
+      return response;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'An error occurred');
+    }
+  }
+
+  Future<Response?> post(String endpoint, Map<String, dynamic> data) async {
+    try {
+      final response = await _dio.post(endpoint, data: data);
+      return response;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'An error occurred');
+    }
+  }
+
+  Future<Response> put(String endpoint, Map<String, dynamic> data) async {
+    try {
+      final response = await _dio.put(endpoint, data: data);
+      return response;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'An error occurred');
+    }
+  }
+
+  Future<Response> patch(String endpoint, Map<String, dynamic> data) async {
+    try {
+      final response = await _dio.patch(endpoint, data: data);
+      return response;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'An error occurred');
+    }
+  }
+
+  Future<Response> delete(String endpoint, {Map<String, dynamic>? data}) async {
+    try {
+      final response = await _dio.delete(endpoint, data: data);
+      return response;
+    } on DioException catch (e) {
+      throw Exception(e.response?.data['message'] ?? 'An error occurred');
     }
   }
 }

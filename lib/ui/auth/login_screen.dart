@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/ui/auth/widgets/build_app_bar.dart';
-import 'package:tb_clinic/ui/auth/widgets/build_body.dart';
+import 'package:tb_clinic/ui/auth/components/build_app_bar.dart';
+import 'package:tb_clinic/ui/auth/components/build_body.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, required this.title});

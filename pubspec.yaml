@@ -1,5 +1,5 @@
 name: tb_clinic
-description: "An MVVM patterned starter for Flutter project."
+description: "This is a hospital management app with flutter to brush up my flutter skill."
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -9,7 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  dio: ^5.7.0
+  flutter_bloc: ^8.1.6
   flutter_splash_screen: ^3.0.0
+  flutter_svg: ^2.0.16
   http: ^1.2.2
   json_annotation: ^4.9.0
   logger: ^2.4.0
