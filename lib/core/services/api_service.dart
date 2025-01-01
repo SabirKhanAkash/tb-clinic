@@ -80,14 +80,14 @@ class ApiService {
     _dio.options.headers['Content-Type'] = 'application/json';
   }
 
-  Future<Response> get(String endpoint, {Map<String, dynamic>? queryParams}) async {
+  Future<Response?> get(String endpoint, {Map<String, dynamic>? queryParams}) async {
     try {
       String? accessToken = await _secureStorage.read(key: AppKey().accessToken);
       _dio.options.headers['Authorization'] = 'Bearer ${accessToken ?? ""}';
       final response = await _dio.get(endpoint, queryParameters: queryParams);
       return response;
     } on DioException catch (e) {
-      throw Exception(e.response?.data['message'] ?? '${e.type} -> An error occurred');
+      processErrorAndThrowException(e);
     }
   }
 
