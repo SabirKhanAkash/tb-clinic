@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tb_clinic/data/dto/auth_dto.dart';
+import 'package:tb_clinic/ui/shared/components/custom_button_one.dart';
+import 'package:tb_clinic/ui/shared/components/custom_text_form_field_one.dart';
+import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
 import 'package:tb_clinic/viewmodels/auth/cubit/auth_cubit.dart';
 import 'package:tb_clinic/viewmodels/auth/state/auth_state.dart';
@@ -13,30 +16,70 @@ Widget buildBody(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              child: Text(
+                AppText().loginHeadingOne,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    fontSize: 16, color: AppColor().borderColor, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: TextFormField(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          child: CustomTextFormFieldOne(
             controller: userNameController,
-            textAlign: TextAlign.start,
             maxLines: 1,
-            maxLength: 20,
-            keyboardType: TextInputType.name,
+            keyboardType: TextInputType.phone,
+            maxLength: 15,
+            hintText: AppText().loginHintOne,
           ),
         ),
-        const SizedBox(height: 20),
+        // const SizedBox(height: 20),
         BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {},
           builder: (context, state) {
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: TextFormField(
-                controller: passwordController,
-                textAlign: TextAlign.start,
-                maxLines: 1,
-                maxLength: 20,
-                keyboardType: TextInputType.name,
-                obscureText: state is AuthObscurePassword ? state.isObscure : true,
-              ),
+            final cubit = context.read<AuthCubit>();
+            return Column(
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 5),
+                      child: Text(
+                        AppText().loginHeadingTwo,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: AppColor().borderColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: CustomTextFormFieldOne(
+                    controller: passwordController,
+                    maxLines: 1,
+                    keyboardType: TextInputType.visiblePassword,
+                    hintText: AppText().loginHintTwo,
+                    obscureText: (state is AuthObscurePassword) ? state.isObscure : true,
+                    suffixIconVisibility: true,
+                    suffixIconAction: () => cubit.toggleObscureness(
+                      (state is AuthObscurePassword) ? state.isObscure : true,
+                    ),
+                  ),
+                ),
+              ],
             );
           },
         ),
@@ -57,16 +100,25 @@ Widget buildBody(
           builder: (context, state) {
             final cubit = context.read<AuthCubit>();
             return state is AuthLoading
-                ? const CircularProgressIndicator.adaptive()
-                : ElevatedButton(
-                    onLongPress: () => (state is AuthObscurePassword)
-                        ? cubit.toggleObscureness(state.isObscure)
-                        : (),
-                    onPressed: () async => await cubit.login(AuthDto(
-                        username: userNameController.text, password: passwordController.text)),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(fontFamily: 'inter'),
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                    child: CircularProgressIndicator.adaptive(
+                      backgroundColor: AppColor().white,
+                      valueColor: AlwaysStoppedAnimation<Color>(AppColor().red),
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: CustomButtonOne(
+                      buttonLabel: AppText().loginButtonText,
+                      backgroundColor: AppColor().red,
+                      foregroundColor: AppColor().white,
+                      buttonClickAction: () async => await cubit.login(
+                        AuthDto(
+                          username: userNameController.text,
+                          password: passwordController.text,
+                        ),
+                      ),
                     ),
                   );
           },

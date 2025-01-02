@@ -34,7 +34,7 @@ flutter:
     - assets/others/
 
   fonts:
-    - family: inter
+    - family: dm-sans
       fonts:
         - asset: assets/fonts/inter.ttf
           style: normal

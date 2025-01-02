@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/ui/auth/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/auth/components/build_body.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context, widget.title),
+      // appBar: buildAppBar(context, widget.title),
       body: buildBody(userNameController, passwordController),
     );
   }
