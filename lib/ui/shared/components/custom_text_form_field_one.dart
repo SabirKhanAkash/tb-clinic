@@ -29,6 +29,7 @@ class CustomTextFormFieldOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(height: 1.2, fontSize: AppText().regularFontSize, color: AppColor().gray),
       controller: controller,
       keyboardType: keyboardType,
       maxLength: maxLength,

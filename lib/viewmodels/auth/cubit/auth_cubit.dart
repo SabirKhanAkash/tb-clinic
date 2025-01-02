@@ -13,6 +13,10 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthObscurePassword(!isObscure));
   }
 
+  void toggleCheckRememberMe(bool isChecked) {
+    emit(AuthCheckRememberMe(!isChecked));
+  }
+
   Future<void> login(AuthDto authDto) async {
     emit(AuthLoading(true));
     try {

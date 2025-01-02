@@ -10,6 +10,12 @@ class AuthObscurePassword extends AuthState {
   AuthObscurePassword(this.isObscure);
 }
 
+class AuthCheckRememberMe extends AuthState {
+  final bool isChecked;
+
+  AuthCheckRememberMe(this.isChecked);
+}
+
 class AuthLoading extends AuthState {
   final bool isLoading;
 
