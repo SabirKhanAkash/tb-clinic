@@ -7,8 +7,8 @@ import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
-import 'package:tb_clinic/viewmodels/cubit/auth/auth_cubit.dart';
-import 'package:tb_clinic/viewmodels/state/auth/auth_state.dart';
+import 'package:tb_clinic/viewmodels/auth/auth_cubit.dart';
+import 'package:tb_clinic/viewmodels/auth/auth_state.dart';
 
 Widget buildRegisterBody(
   TextEditingController firstNameController,

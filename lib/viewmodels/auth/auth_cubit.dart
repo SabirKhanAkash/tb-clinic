@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tb_clinic/data/dto/auth_dto.dart';
 import 'package:tb_clinic/data/models/data_model/data.dart';
 import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
-import 'package:tb_clinic/viewmodels/state/auth/auth_state.dart';
+import 'package:tb_clinic/viewmodels/auth/auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepository _authRepository;

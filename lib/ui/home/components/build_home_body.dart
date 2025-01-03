@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/ui/home/home_screen.dart';
+import 'package:tb_clinic/ui/home/screens/home_screen.dart';
 import 'package:tb_clinic/ui/shared/components/custom_elevated_button_one.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';

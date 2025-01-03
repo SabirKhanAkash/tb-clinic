@@ -6,8 +6,8 @@ import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
-import 'package:tb_clinic/viewmodels/cubit/home/home_cubit.dart';
-import 'package:tb_clinic/viewmodels/state/home/home_state.dart';
+import 'package:tb_clinic/viewmodels/home/home_cubit.dart';
+import 'package:tb_clinic/viewmodels/home/home_state.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

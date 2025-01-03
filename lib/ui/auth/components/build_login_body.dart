@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tb_clinic/data/dto/auth_dto.dart';
-import 'package:tb_clinic/ui/auth/forget_password_screen.dart';
-import 'package:tb_clinic/ui/auth/register_screen.dart';
-import 'package:tb_clinic/ui/home/home_screen.dart';
+import 'package:tb_clinic/ui/auth/screens/forget_password_screen.dart';
+import 'package:tb_clinic/ui/auth/screens/register_screen.dart';
+import 'package:tb_clinic/ui/home/screens/home_screen.dart';
 import 'package:tb_clinic/ui/shared/components/custom_elevated_button_one.dart';
 import 'package:tb_clinic/ui/shared/components/custom_outlined_button_one.dart';
 import 'package:tb_clinic/ui/shared/components/custom_text_form_field_one.dart';
@@ -11,8 +11,8 @@ import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
-import 'package:tb_clinic/viewmodels/cubit/auth/auth_cubit.dart';
-import 'package:tb_clinic/viewmodels/state/auth/auth_state.dart';
+import 'package:tb_clinic/viewmodels/auth/auth_cubit.dart';
+import 'package:tb_clinic/viewmodels/auth/auth_state.dart';
 
 Widget buildLoginBody(
   TextEditingController emailController,

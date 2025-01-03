@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:tb_clinic/core/services/log_service.dart';
 import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
-import 'package:tb_clinic/ui/auth/login_screen.dart';
+import 'package:tb_clinic/ui/auth/screens/login_screen.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
 import 'package:tb_clinic/utils/config/env.dart';
-import 'package:tb_clinic/viewmodels/cubit/auth/auth_cubit.dart';
-import 'package:tb_clinic/viewmodels/cubit/home/home_cubit.dart';
+import 'package:tb_clinic/viewmodels/auth/auth_cubit.dart';
+import 'package:tb_clinic/viewmodels/home/home_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
