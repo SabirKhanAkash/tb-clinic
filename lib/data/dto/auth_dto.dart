@@ -1,9 +1,9 @@
 class AuthDto {
-  String? username;
+  String? email;
   String? password;
 
   AuthDto({
-    this.username,
+    this.email,
     this.password,
   });
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/utils/config/app_text.dart';
+import 'package:tb_clinic/utils/config/app_style.dart';
 
 class CustomElevatedButtonOne extends StatelessWidget {
   final String buttonLabel;
@@ -8,12 +8,12 @@ class CustomElevatedButtonOne extends StatelessWidget {
   final VoidCallback? buttonClickAction;
 
   const CustomElevatedButtonOne({
-    Key? key,
+    super.key,
     required this.buttonLabel,
     this.backgroundColor,
     this.foregroundColor,
     this.buttonClickAction,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ class CustomElevatedButtonOne extends StatelessWidget {
       child: Text(
         buttonLabel,
         style: TextStyle(
-          fontSize: AppText().largeFontSize,
-          fontFamily: AppText().primaryFont,
+          fontSize: AppStyle().largeDp,
+          fontFamily: AppStyle().primaryFont,
         ),
       ),
     );

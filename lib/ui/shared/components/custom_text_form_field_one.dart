@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
-import 'package:tb_clinic/utils/config/app_text.dart';
+import 'package:tb_clinic/utils/config/app_style.dart';
 
 class CustomTextFormFieldOne extends StatelessWidget {
   final TextEditingController controller;
@@ -14,7 +14,7 @@ class CustomTextFormFieldOne extends StatelessWidget {
   final VoidCallback? suffixIconAction;
 
   const CustomTextFormFieldOne({
-    Key? key,
+    super.key,
     required this.controller,
     this.hintText = '',
     this.keyboardType = TextInputType.text,
@@ -24,12 +24,12 @@ class CustomTextFormFieldOne extends StatelessWidget {
     this.suffixIconVisibility = false,
     this.counterTextEnabled = false,
     this.suffixIconAction,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: TextStyle(height: 1.2, fontSize: AppText().regularFontSize, color: AppColor().gray),
+      style: TextStyle(height: 1.2, fontSize: AppStyle().regularDp, color: AppColor().gray),
       controller: controller,
       keyboardType: keyboardType,
       maxLength: maxLength,
@@ -37,7 +37,7 @@ class CustomTextFormFieldOne extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppText().inputBoxRadius),
+          borderRadius: BorderRadius.circular(AppStyle().smallDp),
           borderSide: BorderSide(
             color: AppColor().borderColor,
           ),
@@ -47,7 +47,7 @@ class CustomTextFormFieldOne extends StatelessWidget {
           visible: suffixIconVisibility,
           child: IconButton(
             icon: Icon(
-              obscureText ? Icons.visibility_off : Icons.visibility,
+              obscureText ? Icons.visibility : Icons.visibility_off,
             ),
             onPressed: suffixIconAction,
           ),

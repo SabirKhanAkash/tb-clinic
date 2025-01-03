@@ -4,10 +4,22 @@ abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class AuthObscurePassword extends AuthState {
+class LoginObscurePassword extends AuthState {
   final bool isObscure;
 
-  AuthObscurePassword(this.isObscure);
+  LoginObscurePassword(this.isObscure);
+}
+
+class RegisterObscurePassword extends AuthState {
+  final bool isObscure;
+
+  RegisterObscurePassword(this.isObscure);
+}
+
+class RegisterObscureConfirmPassword extends AuthState {
+  final bool isObscure;
+
+  RegisterObscureConfirmPassword(this.isObscure);
 }
 
 class AuthCheckRememberMe extends AuthState {

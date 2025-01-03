@@ -5,9 +5,11 @@ import 'package:tb_clinic/core/services/log_service.dart';
 import 'package:tb_clinic/data/repositories/remote/auth_repository.dart';
 import 'package:tb_clinic/ui/auth/login_screen.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
+import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
 import 'package:tb_clinic/utils/config/env.dart';
-import 'package:tb_clinic/viewmodels/auth/cubit/auth_cubit.dart';
+import 'package:tb_clinic/viewmodels/cubit/auth/auth_cubit.dart';
+import 'package:tb_clinic/viewmodels/cubit/home/home_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,16 +44,19 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (_) => AuthCubit(AuthRepository()),
         ),
+        BlocProvider(
+          create: (_) => HomeCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: Env().envType == AppText().devEnv,
         title: AppText().title,
         theme: ThemeData(
-          fontFamily: AppText().primaryFont,
+          fontFamily: AppStyle().primaryFont,
           colorScheme: ColorScheme.fromSeed(seedColor: AppColor().primary),
           useMaterial3: true,
         ),
-        home: LoginScreen(title: AppText().title),
+        home: const LoginScreen(),
       ),
     );
   }

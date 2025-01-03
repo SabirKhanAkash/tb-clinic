@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
-import 'package:tb_clinic/utils/config/app_text.dart';
+import 'package:tb_clinic/utils/config/app_style.dart';
 
 class CustomOutLinedButtonOne extends StatelessWidget {
   final String? prefixIcon;
@@ -11,13 +11,13 @@ class CustomOutLinedButtonOne extends StatelessWidget {
   final VoidCallback? buttonClickAction;
 
   const CustomOutLinedButtonOne({
-    Key? key,
+    super.key,
     this.prefixIcon,
     required this.buttonLabel,
     this.backgroundColor,
     this.foregroundColor,
     this.buttonClickAction,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class CustomOutLinedButtonOne extends StatelessWidget {
         ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppText().inputBoxRadius), // Border radius
+            borderRadius: BorderRadius.circular(AppStyle().smallDp), // Border radius
           ),
         ),
       ),
@@ -55,8 +55,8 @@ class CustomOutLinedButtonOne extends StatelessWidget {
           Text(
             buttonLabel,
             style: TextStyle(
-              fontSize: AppText().mediumFontSize,
-              fontFamily: AppText().primaryFont,
+              fontSize: AppStyle().mediumDp,
+              fontFamily: AppStyle().primaryFont,
             ),
           ),
         ],
