@@ -19,6 +19,7 @@ PreferredSizeWidget buildAppBar(BuildContext context, String? dp, String? userNa
             right: BorderSide(width: 1, color: AppColor().white),
           ),
           shape: BoxShape.circle,
+          
           image: DecorationImage(
             image: NetworkImage(dp ?? ""),
             fit: BoxFit.cover,
