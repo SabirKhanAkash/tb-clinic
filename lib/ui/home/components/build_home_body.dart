@@ -17,42 +17,122 @@ Widget buildHomeBody(BuildContext context) {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                  child: CustomElevatedButtonOne(
-                    buttonLabel: AppText().homeButtonTextOne,
-                    backgroundColor: AppColor().red,
-                    foregroundColor: AppColor().white,
-                    buttonClickAction: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: <Color>[
+                            AppColor().moreLightPurple,
+                            AppColor().darkPurple,
+                          ],
+                        ),
+                      ),
+                      child: CustomElevatedButtonOne(
+                        buttonLabel: AppText().homeButtonTextOne,
+                        backgroundColor: AppColor().red,
+                        foregroundColor: AppColor().white,
+                        buttonClickAction: () => Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                  child: CustomElevatedButtonOne(
-                    buttonLabel: AppText().homeButtonTextTwo,
-                    backgroundColor: AppColor().purple,
-                    foregroundColor: AppColor().white,
-                    buttonClickAction: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: <Color>[
+                            AppColor().moreLightPurple,
+                            AppColor().darkPurple,
+                          ],
+                        ),
+                      ),
+                      child: CustomElevatedButtonOne(
+                        buttonLabel: AppText().homeButtonTextTwo,
+                        backgroundColor: AppColor().purple,
+                        foregroundColor: AppColor().white,
+                        buttonClickAction: () => Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                  child: CustomElevatedButtonOne(
-                    buttonLabel: AppText().locationLabel,
-                    backgroundColor: AppColor().purple,
-                    foregroundColor: AppColor().white,
-                    buttonClickAction: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: <Color>[
+                            AppColor().moreLightPurple, // Start color of the gradient
+                            AppColor().darkPurple, // End color of the gradient
+                          ],
+                        ),
+                      ),
+                      child: CustomElevatedButtonOne(
+                        buttonLabel: AppText().locationLabel,
+                        backgroundColor: AppColor().purple,
+                        foregroundColor: AppColor().white,
+                        buttonClickAction: () => Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                  child: CustomElevatedButtonOne(
-                    buttonLabel: AppText().homeButtonTextFour,
-                    backgroundColor: AppColor().purple,
-                    foregroundColor: AppColor().white,
-                    buttonClickAction: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: <Color>[
+                            AppColor().moreLightPurple,
+                            AppColor().darkPurple,
+                          ],
+                        ),
+                      ),
+                      child: CustomElevatedButtonOne(
+                        buttonLabel: AppText().homeButtonTextFour,
+                        backgroundColor: AppColor().purple,
+                        foregroundColor: AppColor().white,
+                        buttonClickAction: () => Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                      ),
+                    ),
                   ),
                 ),
               ],
