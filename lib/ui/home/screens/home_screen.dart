@@ -4,6 +4,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
+import 'package:tb_clinic/ui/home/components/build_location_body.dart';
+import 'package:tb_clinic/ui/home/components/build_message_body.dart';
+import 'package:tb_clinic/ui/home/components/build_profile_body.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
@@ -19,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   FlutterSecureStorage? secureStorage;
-  String? dp = "", userName = "Md. Shabir Khan Akash";
+  String dp = AppImage().splashLogo, userName = "Md. Shabir Khan Akash";
 
   @override
   void initState() {
@@ -29,29 +32,48 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(context, dp, userName),
-      body: buildHomeBody(context),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColor().veryLightWhite,
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-          child: BlocConsumer<HomeCubit, HomeState>(
-            listener: (context, state) {
-              // if (state is BottomNavBarItemSelection) {
-              //   ScaffoldMessenger.of(context)
-              //       .showSnackBar(SnackBar(content: Text("Successfully Item Selected")));
-              // }
-            },
-            builder: (context, state) {
-              final cubit = context.read<HomeCubit>();
-
-              return BottomNavigationBar(
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        // if (state is BottomNavBarItemSelection) {
+        //   ScaffoldMessenger.of(context)
+        //       .showSnackBar(SnackBar(content: Text("Successfully Item Selected")));
+        // }
+      },
+      builder: (context, state) {
+        final cubit = context.read<HomeCubit>();
+        return Scaffold(
+          appBar: buildAppBar(context, dp, userName),
+          body: state is BottomNavBarItemSelection
+              ? state.currentItemIndex == 1
+                  ? buildLocationBody(context)
+                  : state.currentItemIndex == 2
+                      ? buildMessageBody(context)
+                      : state.currentItemIndex == 3
+                          ? buildProfileBody(context)
+                          : buildHomeBody(context)
+              : buildHomeBody(context),
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              color: AppColor().veryLightWhite,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 10,
+                  blurRadius: 40,
+                  offset: Offset(-10, -10),
+                ),
+              ],
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+              child: BottomNavigationBar(
                 backgroundColor: AppColor().veryLightWhite,
                 elevation: 265,
                 showSelectedLabels: false,
@@ -95,12 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
                 onTap: cubit.selectBottomNavItem,
                 currentIndex: (state is BottomNavBarItemSelection) ? state.currentItemIndex : 0,
-                // onTap: ,
-              );
-            },
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

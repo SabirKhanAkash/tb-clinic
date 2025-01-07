@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 
-PreferredSizeWidget buildAppBar(BuildContext context, String? dp, String? userName) {
+PreferredSizeWidget buildAppBar(BuildContext context, String dp, String? userName) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(125),
     child: ClipRRect(
@@ -29,6 +29,10 @@ PreferredSizeWidget buildAppBar(BuildContext context, String? dp, String? userNa
           padding: const EdgeInsets.only(left: 16),
           child: Container(
             decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(dp),
+                // fit: BoxFit.cover,
+              ),
               border: Border(
                 top: BorderSide(width: 1, color: AppColor().white),
                 bottom: BorderSide(width: 1, color: AppColor().white),
@@ -36,10 +40,6 @@ PreferredSizeWidget buildAppBar(BuildContext context, String? dp, String? userNa
                 right: BorderSide(width: 1, color: AppColor().white),
               ),
               shape: BoxShape.circle,
-              image: DecorationImage(
-                image: NetworkImage(dp ?? ""),
-                fit: BoxFit.cover,
-              ),
             ),
           ),
         ),
@@ -60,21 +60,21 @@ PreferredSizeWidget buildAppBar(BuildContext context, String? dp, String? userNa
             ),
           ],
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: IconButton(
-              onPressed: () {
-                // Add your search function here
-              },
-              icon: Icon(
-                Icons.search,
-                color: AppColor().white,
-                size: 35,
-              ),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 16),
+        //     child: IconButton(
+        //       onPressed: () {
+        //         // Add your search function here
+        //       },
+        //       icon: Icon(
+        //         Icons.search,
+        //         color: AppColor().white,
+        //         size: 35,
+        //       ),
+        //     ),
+        //   ),
+        // ],
       ),
     ),
   );

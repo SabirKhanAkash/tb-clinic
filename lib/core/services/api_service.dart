@@ -16,13 +16,6 @@ class ApiService {
             receiveTimeout: Duration(seconds: Env().connectionTimeout),
           ),
         ) {
-    _dio.interceptors.add(LogInterceptor(
-      responseBody: true,
-      requestBody: true,
-      requestHeader: true,
-      responseHeader: false,
-      request: true,
-    ));
     Future<String> refreshToken() async {
       try {
         String? refreshToken = await _secureStorage.read(key: AppKey().refreshToken);
@@ -52,6 +45,16 @@ class ApiService {
         throw Exception('Token refresh error: $e');
       }
     }
+
+    _dio.interceptors.add(
+      LogInterceptor(
+        responseBody: true,
+        requestBody: true,
+        requestHeader: true,
+        responseHeader: false,
+        request: true,
+      ),
+    );
 
     // _dio.options.headers['Authorization'] = 'Bearer YOUR_TOKEN';
     _dio.interceptors.add(

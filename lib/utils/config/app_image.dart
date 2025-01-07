@@ -1,5 +1,6 @@
 class AppImage {
   final facebookIcon = "assets/icons/ic_facebook.svg";
+  final dp = "https://avatar.iran.liara.run/public/39";
   final googleIcon = "assets/icons/ic_google.svg";
   final logoWithTag = 'assets/icons/ic_app_icon_with_tag.png';
   final logoWithTagForRegisterScreen = 'assets/icons/ic_app_icon_with_tag_register_screen.png';
