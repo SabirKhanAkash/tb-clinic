@@ -26,6 +26,8 @@ class AppText {
   final locationLabel = "Location";
   final chatLabel = "Chat";
   final profileLabel = "Profile";
+  final tbClinicLatitude = 23.725985;
+  final tbClinicLongitude = 90.397655;
   final loginButton = "Login";
   final loginButtonText = "Log In";
   final loginHeadingOne = "Number";
@@ -35,6 +37,7 @@ class AppText {
   final loginWithFacebookButtonText = "Continue with Facebook";
   final loginWithGoogleButtonText = "Continue with Google";
   final or = "Or";
+  final openStreetMapUrlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   final registerButton = "Register";
   final registerButtonText = "Register Now";
   final registerHeadingFive = "Confirm Password";

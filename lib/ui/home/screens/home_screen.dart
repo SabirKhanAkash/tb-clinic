@@ -4,9 +4,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
-import 'package:tb_clinic/ui/home/components/build_location_body.dart';
-import 'package:tb_clinic/ui/home/components/build_message_body.dart';
-import 'package:tb_clinic/ui/home/components/build_profile_body.dart';
+import 'package:tb_clinic/ui/location/screens/location.dart';
+import 'package:tb_clinic/ui/message/screens/message.dart';
+import 'package:tb_clinic/ui/profile/screens/profile.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
@@ -45,11 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: buildAppBar(context, dp, userName),
           body: state is BottomNavBarItemSelection
               ? state.currentItemIndex == 1
-                  ? buildLocationBody(context)
+                  ? const Location()
                   : state.currentItemIndex == 2
-                      ? buildMessageBody(context)
+                      ? const Message()
                       : state.currentItemIndex == 3
-                          ? buildProfileBody(context)
+                          ? const Profile()
                           : buildHomeBody(context)
               : buildHomeBody(context),
           bottomNavigationBar: Container(
