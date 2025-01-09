@@ -13,6 +13,8 @@ class AppText {
   final homeButtonTextFour = "Notifications";
   final defaultLatitude = 23.774598;
   final defaultLongitude = 90.421954;
+  final locationHeading = "Select Location";
+  final locationSubHeading = "Your Location";
   final locationButtonTextOne = "Refer Patient (L)";
   final locationButtonTextTwo = "Patient Details (L)";
   final locationButtonTextThree = "Location (L)";

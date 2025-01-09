@@ -4,6 +4,7 @@ class AppColor {
   final black = const Color(0xff1E1E1E);
   final borderColor = const Color(0xff232323);
   final gray = const Color(0xff5F5F5F);
+  final smallGray = const Color(0xff9D9D9D);
   final lightBlack = const Color(0xff1B1B1B);
   final lightGray = const Color(0xffb0b7b7);
   final lightWhite = const Color(0xffEDEDED);
