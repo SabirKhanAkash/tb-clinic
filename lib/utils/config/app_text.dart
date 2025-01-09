@@ -11,6 +11,8 @@ class AppText {
   final homeButtonTextTwo = "Patient Details";
   final homeButtonTextThree = "Location";
   final homeButtonTextFour = "Notifications";
+  final defaultLatitude = 23.774598;
+  final defaultLongitude = 90.421954;
   final locationButtonTextOne = "Refer Patient (L)";
   final locationButtonTextTwo = "Patient Details (L)";
   final locationButtonTextThree = "Location (L)";
@@ -19,6 +21,7 @@ class AppText {
   final messageButtonTextTwo = "Patient Details (M)";
   final messageButtonTextThree = "Location (M)";
   final messageButtonTextFour = "Notifications (M)";
+  final openRouteApiBaseUrl = "https://api.openrouteservice.org/v2/directions/driving-car";
   final profileButtonTextOne = "Refer Patient (P)";
   final profileButtonTextTwo = "Patient Details (P)";
   final profileButtonTextThree = "Location (P)";
