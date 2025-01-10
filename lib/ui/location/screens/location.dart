@@ -42,7 +42,7 @@ class _LocationState extends State<Location> {
       builder: (context, snapshot) {
         List<LatLng> routePoints = [];
         if (snapshot.hasData) routePoints = snapshot.data!;
-        var myAddress;
+        var myAddress = "Pa-149/3 South Badda, Dhaka - 1212";
         final bounds = LatLngBounds.fromPoints(
           routePoints.isNotEmpty
               ? routePoints

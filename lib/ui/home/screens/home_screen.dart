@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
 import 'package:tb_clinic/ui/location/screens/location.dart';
@@ -10,6 +11,8 @@ import 'package:tb_clinic/ui/profile/screens/profile.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
+import 'package:tb_clinic/utils/helpers/map_helper.dart';
+import 'package:tb_clinic/utils/helpers/permission_helper.dart';
 import 'package:tb_clinic/viewmodels/home/home_cubit.dart';
 import 'package:tb_clinic/viewmodels/home/home_state.dart';
 
@@ -33,11 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {
-        // if (state is BottomNavBarItemSelection) {
-        //   ScaffoldMessenger.of(context)
-        //       .showSnackBar(SnackBar(content: Text("Successfully Item Selected")));
-        // }
+      listener: (context, state) async {
+        if (state is BottomNavBarItemSelection) {
+          if (state.currentItemIndex == 1) {
+            await PermissionHelper.handlePermission(Permission.location);
+            final locationResult = await MapHelper().getMyLocation();
+            locationResult.fold(
+              (ifLeft) =>
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ifLeft))),
+              (ifRight) => myLatLng = ifRight,
+            );
+          }
+        }
       },
       builder: (context, state) {
         final cubit = context.read<HomeCubit>();
