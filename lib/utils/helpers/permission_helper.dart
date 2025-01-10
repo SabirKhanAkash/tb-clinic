@@ -6,10 +6,7 @@ class PermissionHelper {
     if (!currentPermissionStatus.isGranted) {
       switch (currentPermissionStatus) {
         case PermissionStatus.permanentlyDenied:
-          await openAppSettings();
-          break;
-
-        case PermissionStatus.granted:
+          await openSettings();
           break;
 
         default:
@@ -35,7 +32,7 @@ class PermissionHelper {
     return await permission.isRestricted;
   }
 
-  static Future<void> openAppSettings() async {
+  static Future<void> openSettings() async {
     await openAppSettings();
   }
 

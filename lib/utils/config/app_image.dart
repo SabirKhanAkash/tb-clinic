@@ -1,6 +1,9 @@
 class AppImage {
   final facebookIcon = "assets/icons/ic_facebook.svg";
   final dp = "https://avatar.iran.liara.run/public/39";
+  final homePrefix = "assets/icons/ic_home_prefix_icon.svg";
+  final patientPrefix = "assets/icons/ic_patient_prefix_icon.svg";
+  final otherPrefix = "assets/icons/ic_nav_prefix_icon.svg";
   final patientNavIndicator = "assets/icons/ic_patient_nav_indicator.svg";
   final tbClinicNavIndicator = "assets/icons/ic_tb_clinic_nav_indicator.svg";
   final googleIcon = "assets/icons/ic_google.svg";

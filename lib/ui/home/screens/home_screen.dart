@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
@@ -27,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
   FlutterSecureStorage? secureStorage;
   String dp = AppImage().splashLogo, userName = "Md. Shabir Khan Akash";
 
+  LatLng myLatLng = LatLng(AppText().defaultLatitude, AppText().defaultLongitude);
+
   @override
   void initState() {
     secureStorage = const FlutterSecureStorage();
@@ -39,8 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
       listener: (context, state) async {
         if (state is BottomNavBarItemSelection) {
           if (state.currentItemIndex == 1) {
+            // PopupHelper.showLoadingPopup(context);
             await PermissionHelper.handlePermission(Permission.location);
             final locationResult = await MapHelper().getMyLocation();
+            // PopupHelper.hideLoadingPopup(context);
             locationResult.fold(
               (ifLeft) =>
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ifLeft))),
@@ -55,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: buildAppBar(context, dp, userName),
           body: state is BottomNavBarItemSelection
               ? state.currentItemIndex == 1
-                  ? const Location()
+                  ? Location(myLatLng)
                   : state.currentItemIndex == 2
                       ? const Message()
                       : state.currentItemIndex == 3

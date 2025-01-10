@@ -1,4 +1,7 @@
 class AppText {
+  final clinic = "Clinic";
+  final patients = "Patients";
+  final others = "Others";
   final devEnv = "dev";
   final exceptionHeading = "Exception: ";
   final forgetPasswordButtonText = "Recover Now";
@@ -23,11 +26,14 @@ class AppText {
   final messageButtonTextTwo = "Patient Details (M)";
   final messageButtonTextThree = "Location (M)";
   final messageButtonTextFour = "Notifications (M)";
+  final gettingLocationInfo = "Getting location details...";
+  final noLocationFound = "Location not found";
   final openRouteApiBaseUrl = "https://api.openrouteservice.org/v2/directions/driving-car";
   final profileButtonTextOne = "Refer Patient (P)";
   final profileButtonTextTwo = "Patient Details (P)";
   final profileButtonTextThree = "Location (P)";
   final profileButtonTextFour = "Notifications (P)";
+  final saveAsHeading = "Save As";
   final locationLabel = "Location";
   final chatLabel = "Chat";
   final profileLabel = "Profile";
@@ -45,6 +51,7 @@ class AppText {
   final openStreetMapUrlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   final registerButton = "Register";
   final registerButtonText = "Register Now";
+  final saveAddressButtonText = "Save Address";
   final registerHeadingFive = "Confirm Password";
   final registerHeadingFour = "Password";
   final registerHeadingOne = "First Name";

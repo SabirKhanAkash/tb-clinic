@@ -1,34 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:tb_clinic/core/services/api_service.dart';
 import 'package:tb_clinic/utils/config/app_key.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
-import 'package:geocoding/geocoding.dart';
 
 class MapHelper {
   Future<Either<String, LatLng>> getMyLocation() async {
-    // bool serviceEnabled;
-    // LocationPermission permission;
-    //
-    // serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    // if (!serviceEnabled) {
-    //   return const Left("Location Service is not enabled");
-    // }
-    //
-    // permission = await Geolocator.checkPermission();
-    //
-    // if (permission == LocationPermission.denied) {
-    //   permission = await Geolocator.requestPermission();
-    //   if (permission == LocationPermission.denied) {
-    //     return const Left("Location Permission is denied");
-    //   }
-    // }
-    //
-    // if (permission == LocationPermission.deniedForever) {
-    //   return const Left("Location Permission is permanently denied");
-    // }
-
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.bestForNavigation, forceAndroidLocationManager: true);
     return Right(LatLng(position.latitude, position.longitude));
@@ -89,20 +68,17 @@ class MapHelper {
               final placemark = placemarks[0];
               final address =
                   "${placemark.street ?? ''}, ${placemark.subLocality ?? ''}, ${placemark.locality ?? ''}, ${placemark.administrativeArea ?? ''}, ${placemark.country ?? ''}";
-              print("Address: $address");
               return Right(address);
             } else {
-              return const Left("No address found for this location");
+              return Left(AppText().noLocationFound);
             }
           } catch (e) {
-            print('Error fetching address: $e');
-            return const Left("Error fetching address");
+            return Left(AppText().noLocationFound);
           }
         },
       );
     } catch (e) {
-      print('Error getting location: $e');
-      return const Left("Error getting location");
+      return Left(AppText().noLocationFound);
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:tb_clinic/ui/shared/components/custom_elevated_button_one.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_style.dart';
@@ -9,31 +10,17 @@ import 'package:tb_clinic/utils/config/app_text.dart';
 import 'package:tb_clinic/utils/helpers/map_helper.dart';
 
 class Location extends StatefulWidget {
-  const Location({super.key});
+  LatLng myLatLng;
+
+  Location(this.myLatLng, {super.key});
 
   @override
   State<Location> createState() => _LocationState();
 }
 
 class _LocationState extends State<Location> {
-  LatLng? myLatLng;
   LatLng tbClinicLatLng = LatLng(AppText().tbClinicLatitude, AppText().tbClinicLongitude);
-
-  @override
-  void initState() {
-    Future.delayed(
-      Duration.zero,
-      () async {
-        final locationResult = await MapHelper().getMyLocation();
-        locationResult.fold(
-          (ifLeft) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ifLeft))),
-          (ifRight) => myLatLng = ifRight,
-        );
-      },
-    );
-
-    super.initState();
-  }
+  TextEditingController locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,19 +29,21 @@ class _LocationState extends State<Location> {
       builder: (context, snapshot) {
         List<LatLng> routePoints = [];
         if (snapshot.hasData) routePoints = snapshot.data!;
-        var myAddress = "Pa-149/3 South Badda, Dhaka - 1212";
+        String myAddress = AppText().gettingLocationInfo;
+        locationController.text = myAddress;
         final bounds = LatLngBounds.fromPoints(
-          routePoints.isNotEmpty
-              ? routePoints
-              : [
-                  myLatLng ?? LatLng(AppText().defaultLatitude, AppText().defaultLongitude),
-                  tbClinicLatLng
-                ],
+          routePoints.isNotEmpty ? routePoints : [widget.myLatLng, tbClinicLatLng],
         );
         MapHelper().getMyAddress().then((addressEither) {
           addressEither.fold(
-            (errorMessage) => myAddress = errorMessage,
-            (address) => myAddress = address,
+            (errorMessage) {
+              locationController.text = errorMessage;
+              return myAddress = errorMessage;
+            },
+            (address) {
+              locationController.text = address;
+              return myAddress = address;
+            },
           );
         });
 
@@ -88,8 +77,7 @@ class _LocationState extends State<Location> {
                     markers: [
                       Marker(
                         rotate: true,
-                        point: myLatLng ??
-                            LatLng(AppText().defaultLatitude, AppText().defaultLongitude),
+                        point: widget.myLatLng,
                         width: 40,
                         height: 40,
                         child: SvgPicture.asset(
@@ -116,7 +104,7 @@ class _LocationState extends State<Location> {
                 topRight: Radius.circular(30),
               ),
               child: Container(
-                height: MediaQuery.of(context).size.height / 3,
+                // height: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width,
                 color: AppColor().white,
                 child: Padding(
@@ -154,8 +142,30 @@ class _LocationState extends State<Location> {
                       ),
                       Align(
                         alignment: Alignment.centerLeft,
+                        child: TextField(
+                          maxLines: 1,
+                          onTap: () {
+                            locationController.selection = TextSelection(
+                              baseOffset: 0,
+                              extentOffset: locationController.text.length,
+                            );
+                          },
+                          controller: locationController,
+                          style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                            color: AppColor().smallGray,
+                            fontWeight: FontWeight.normal,
+                            fontSize: AppStyle().regularDp,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
                         child: Text(
-                          myAddress,
+                          AppText().saveAsHeading,
                           style: TextStyle(
                             color: AppColor().smallGray,
                             fontWeight: FontWeight.normal,
@@ -163,6 +173,84 @@ class _LocationState extends State<Location> {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(2.2),
+                            child: Container(
+                              width: (MediaQuery.of(context).size.width / 2) - 30,
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                              color: AppColor().veryLightWhite,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(AppImage().homePrefix),
+                                  const SizedBox(width: 8),
+                                  Text(AppText().clinic),
+                                ],
+                              ),
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(2.2),
+                            child: Container(
+                              width: (MediaQuery.of(context).size.width / 2) - 30,
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                              color: AppColor().veryLightWhite,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(AppImage().patientPrefix),
+                                  const SizedBox(width: 8),
+                                  Text(AppText().patients),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(2.2),
+                            child: Container(
+                              width: (MediaQuery.of(context).size.width / 2) - 30,
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                              color: AppColor().veryLightWhite,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(AppImage().otherPrefix),
+                                  const SizedBox(width: 8),
+                                  Text(AppText().others),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      CustomElevatedButtonOne(
+                        buttonLabel: AppText().saveAddressButtonText,
+                        backgroundColor: AppColor().red,
+                        foregroundColor: AppColor().white,
+                        buttonClickAction: () async => (),
+                      )
                     ],
                   ),
                 ),
