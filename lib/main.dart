@@ -10,6 +10,7 @@ import 'package:tb_clinic/utils/config/app_text.dart';
 import 'package:tb_clinic/utils/config/env.dart';
 import 'package:tb_clinic/viewmodels/auth/auth_cubit.dart';
 import 'package:tb_clinic/viewmodels/home/home_cubit.dart';
+import 'package:tb_clinic/viewmodels/location/location_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,6 +47,9 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: (_) => HomeCubit(),
+        ),
+        BlocProvider(
+          create: (_) => LocationCubit(),
         ),
       ],
       child: MaterialApp(

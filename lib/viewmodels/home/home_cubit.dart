@@ -18,7 +18,6 @@ class HomeCubit extends Cubit<HomeState> {
     result.fold(
         (ifLeft) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ifLeft))),
         (ifRight) => currentLatLng = ifRight);
-    print("Im here with ${currentLatLng}");
     emit(MyCurrentLocation(currentLatLng));
   }
 }
