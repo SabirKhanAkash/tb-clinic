@@ -8,7 +8,7 @@ import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
 import 'package:tb_clinic/ui/location/components/build_location_app_bar.dart';
 import 'package:tb_clinic/ui/location/screens/location.dart';
-import 'package:tb_clinic/ui/message/components/build_chat_app_bar.dart';
+import 'package:tb_clinic/ui/message/components/build_message_app_bar.dart';
 import 'package:tb_clinic/ui/message/screens/message.dart';
 import 'package:tb_clinic/ui/profile/components/build_profile_app_bar.dart';
 import 'package:tb_clinic/ui/profile/screens/profile.dart';
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   : state.currentItemIndex == 1
                       ? buildLocationAppBar()
                       : state.currentItemIndex == 2
-                          ? buildChatAppBar()
+                          ? buildMessageAppBar()
                           : buildProfileAppBar()
               : buildAppBar(context, dp, userName),
           body: state is BottomNavBarItemSelection

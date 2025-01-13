@@ -3,7 +3,7 @@ import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
 
-PreferredSizeWidget buildChatAppBar() {
+PreferredSizeWidget buildMessageAppBar() {
   return PreferredSize(
     preferredSize: const Size.fromHeight(80),
     child: ClipRRect(

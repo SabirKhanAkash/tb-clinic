@@ -1,10 +1,15 @@
 class AppText {
   final chatAppBarLabel = "Patient List";
+  final chatTimestamp = "12:50 PM";
+  final status = "Active";
   final profileAppBarLabel = "Patient Profile";
   final clinic = "Clinic";
   final patients = "Patients";
   final others = "Others";
   final name = "Md. Shabir Khan Akash";
+  final recoveredStatus = "Recovered";
+  final followUpStatus = "Follow up";
+  final sampleDiseases = "lorem ipsum lorem ipsum lorem ipsum";
   final age = "21";
   final devEnv = "dev";
   final exceptionHeading = "Exception: ";

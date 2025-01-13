@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/ui/home/screens/home_screen.dart';
-import 'package:tb_clinic/ui/shared/components/custom_elevated_button_one.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
+import 'package:tb_clinic/utils/config/app_image.dart';
+import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
+import 'package:tb_clinic/utils/helpers/random_generator_helper.dart';
 
 class Message extends StatefulWidget {
   const Message({super.key});
@@ -16,139 +19,71 @@ class _MessageState extends State<Message> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple,
-                              AppColor().darkPurple,
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().messageButtonTextOne,
-                          backgroundColor: AppColor().red,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
-                        ),
-                      ),
+        child: ListView.builder(
+            itemCount: 55,
+            padding: const EdgeInsets.all(10),
+            scrollDirection: Axis.vertical,
+            physics: const AlwaysScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              final recoveryStatus = RandomGeneratorHelper().generateRandomRecoveryStatus();
+              return Container(
+                decoration: BoxDecoration(
+                  color: AppColor().veryLightPurple,
+                  borderRadius: BorderRadius.circular(AppStyle().verySmallDp),
+                ),
+                margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 8),
+                child: ListTile(
+                  title: Text(
+                    RandomGeneratorHelper().generateRandomName(),
+                    style: TextStyle(
+                      fontSize: AppStyle().largeDp,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple,
-                              AppColor().darkPurple,
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().messageButtonTextTwo,
-                          backgroundColor: AppColor().purple,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
-                        ),
-                      ),
+                  subtitle: Text(
+                    RandomGeneratorHelper().generateRandomDisease(),
+                    style: TextStyle(
+                      fontSize: AppStyle().smallDp,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple, // Start color of the gradient
-                              AppColor().darkPurple, // End color of the gradient
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().messageButtonTextThree,
-                          backgroundColor: AppColor().purple,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
-                        ),
-                      ),
-                    ),
+                  leading: Image.network(
+                    "${AppImage().dp}${index + Random().nextInt(30)}",
+                    height: 65,
+                    width: 65,
+                    filterQuality: FilterQuality.low,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple,
-                              AppColor().darkPurple,
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().messageButtonTextFour,
-                          backgroundColor: AppColor().purple,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                  trailing: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        RandomGeneratorHelper().generateRandomTime(),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: AppStyle().verySmallDp,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
+                      Text(
+                        recoveryStatus,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: AppStyle().verySmallDp,
+                          color: recoveryStatus == AppText().recoveredStatus
+                              ? AppColor().green
+                              : recoveryStatus == AppText().followUpStatus
+                                  ? AppColor().yellow
+                                  : AppColor().blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
-          ),
-        ),
+                  style: ListTileStyle.drawer,
+                ),
+              );
+            }),
       ),
     );
   }

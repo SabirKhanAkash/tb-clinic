@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:tb_clinic/ui/shared/components/custom_elevated_button_one.dart';
 import 'package:tb_clinic/ui/shared/components/custom_text_form_field_one.dart';
@@ -38,7 +40,7 @@ class _ProfileState extends State<Profile> {
                       height: MediaQuery.of(context).size.width / 3.5,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(AppImage().dp),
+                          image: NetworkImage("${AppImage().dp}${Random().nextInt(50)}"),
                         ),
                         border: Border(
                           top: BorderSide(width: 2, color: AppColor().moreDarkPurple),
