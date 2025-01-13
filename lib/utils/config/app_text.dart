@@ -1,7 +1,11 @@
 class AppText {
+  final chatAppBarLabel = "Patient List";
+  final profileAppBarLabel = "Patient Profile";
   final clinic = "Clinic";
   final patients = "Patients";
   final others = "Others";
+  final name = "Md. Shabir Khan Akash";
+  final age = "21";
   final devEnv = "dev";
   final exceptionHeading = "Exception: ";
   final forgetPasswordButtonText = "Recover Now";
@@ -52,14 +56,23 @@ class AppText {
   final registerButton = "Register";
   final registerButtonText = "Register Now";
   final saveAddressButtonText = "Save Address";
+  final updateProfileButtonText = "Update Profile";
   final registerHeadingFive = "Confirm Password";
   final registerHeadingFour = "Password";
   final registerHeadingOne = "First Name";
+  final profileHeadingOne = "Full Name";
+  final profileHeadingTwo = "Phone Number";
+  final profileHeadingThree = "Diseases Details";
+  final profileHeadingFour = "Diagnosis Note";
   final registerHeadingThree = "Email";
   final registerHeadingTwo = "Last Name";
   final registerHintFive = "Re enter password";
   final registerHintFour = "Enter password";
   final registerHintOne = "Enter your first name";
+  final profileHintOne = "Enter your name";
+  final profileHintTwo = "Enter your phone number";
+  final profileHintThree = "Enter your diseases details";
+  final profileHintFour = "Enter your diagnosis note";
   final registerHintThree = "Enter your email";
   final registerHintTwo = "Enter your last name";
   final rememberMe = "Remember me";

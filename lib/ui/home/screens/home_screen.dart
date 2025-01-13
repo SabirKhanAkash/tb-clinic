@@ -6,8 +6,11 @@ import 'package:latlong2/latlong.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tb_clinic/ui/home/components/build_app_bar.dart';
 import 'package:tb_clinic/ui/home/components/build_home_body.dart';
+import 'package:tb_clinic/ui/location/components/build_location_app_bar.dart';
 import 'package:tb_clinic/ui/location/screens/location.dart';
+import 'package:tb_clinic/ui/message/components/build_chat_app_bar.dart';
 import 'package:tb_clinic/ui/message/screens/message.dart';
+import 'package:tb_clinic/ui/profile/components/build_profile_app_bar.dart';
 import 'package:tb_clinic/ui/profile/screens/profile.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
 import 'package:tb_clinic/utils/config/app_image.dart';
@@ -26,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   FlutterSecureStorage? secureStorage;
-  String dp = AppImage().splashLogo, userName = "Md. Shabir Khan Akash";
+  String dp = AppImage().splashLogo, userName = AppText().name;
 
   LatLng myLatLng = LatLng(AppText().defaultLatitude, AppText().defaultLongitude);
 
@@ -57,7 +60,15 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         final cubit = context.read<HomeCubit>();
         return Scaffold(
-          appBar: buildAppBar(context, dp, userName),
+          appBar: state is BottomNavBarItemSelection
+              ? (state.currentItemIndex == 0)
+                  ? buildAppBar(context, dp, userName)
+                  : state.currentItemIndex == 1
+                      ? buildLocationAppBar()
+                      : state.currentItemIndex == 2
+                          ? buildChatAppBar()
+                          : buildProfileAppBar()
+              : buildAppBar(context, dp, userName),
           body: state is BottomNavBarItemSelection
               ? state.currentItemIndex == 1
                   ? Location(myLatLng)

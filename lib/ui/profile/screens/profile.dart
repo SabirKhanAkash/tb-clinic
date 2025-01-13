@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tb_clinic/ui/home/screens/home_screen.dart';
 import 'package:tb_clinic/ui/shared/components/custom_elevated_button_one.dart';
+import 'package:tb_clinic/ui/shared/components/custom_text_form_field_one.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
+import 'package:tb_clinic/utils/config/app_image.dart';
+import 'package:tb_clinic/utils/config/app_style.dart';
 import 'package:tb_clinic/utils/config/app_text.dart';
 
 class Profile extends StatefulWidget {
@@ -12,6 +14,11 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneNoController = TextEditingController();
+  final TextEditingController diseasesController = TextEditingController();
+  final TextEditingController diagnosisNoteController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,126 +31,150 @@ class _ProfileState extends State<Profile> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple,
-                              AppColor().darkPurple,
-                            ],
-                          ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 3.5,
+                      height: MediaQuery.of(context).size.width / 3.5,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(AppImage().dp),
                         ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().profileButtonTextOne,
-                          backgroundColor: AppColor().red,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
+                        border: Border(
+                          top: BorderSide(width: 2, color: AppColor().moreDarkPurple),
+                          bottom: BorderSide(width: 2, color: AppColor().moreDarkPurple),
+                          left: BorderSide(width: 2, color: AppColor().moreDarkPurple),
+                          right: BorderSide(width: 2, color: AppColor().moreDarkPurple),
                         ),
+                        shape: BoxShape.circle,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple,
-                              AppColor().darkPurple,
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().profileButtonTextTwo,
-                          backgroundColor: AppColor().purple,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
-                        ),
+                    padding: const EdgeInsets.only(left: 40, right: 40, top: 12, bottom: 5),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        AppText().name,
+                        style: TextStyle(fontSize: AppStyle().largeDp, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Age: ${AppText().age}",
+                        style:
+                            TextStyle(fontSize: AppStyle().mediumDp, fontWeight: FontWeight.bold),
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple, // Start color of the gradient
-                              AppColor().darkPurple, // End color of the gradient
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().profileButtonTextThree,
-                          backgroundColor: AppColor().purple,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
-                        ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      child: Text(
+                        AppText().profileHeadingOne,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: AppColor().borderColor,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: <Color>[
-                              AppColor().moreLightPurple,
-                              AppColor().darkPurple,
-                            ],
-                          ),
-                        ),
-                        child: CustomElevatedButtonOne(
-                          buttonLabel: AppText().profileButtonTextFour,
-                          backgroundColor: AppColor().purple,
-                          foregroundColor: AppColor().white,
-                          buttonClickAction: () => Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => HomeScreen())),
-                        ),
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: CustomTextFormFieldOne(
+                      controller: nameController,
+                      maxLines: 1,
+                      keyboardType: TextInputType.name,
+                      hintText: AppText().profileHintOne,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      child: Text(
+                        AppText().profileHeadingTwo,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: AppColor().borderColor,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: CustomTextFormFieldOne(
+                      controller: phoneNoController,
+                      maxLines: 1,
+                      keyboardType: TextInputType.phone,
+                      hintText: AppText().profileHintTwo,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      child: Text(
+                        AppText().profileHeadingThree,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: AppColor().borderColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: CustomTextFormFieldOne(
+                      controller: diseasesController,
+                      maxLines: 4,
+                      keyboardType: TextInputType.text,
+                      hintText: AppText().profileHintThree,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      child: Text(
+                        AppText().profileHeadingFour,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: AppColor().borderColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: CustomTextFormFieldOne(
+                      controller: diagnosisNoteController,
+                      maxLines: 4,
+                      keyboardType: TextInputType.text,
+                      hintText: AppText().profileHintFour,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 15),
+                    child: CustomElevatedButtonOne(
+                      buttonLabel: AppText().updateProfileButtonText,
+                      backgroundColor: AppColor().red,
+                      foregroundColor: AppColor().white,
+                      buttonClickAction: () async => (),
+                    ),
+                  )
                 ],
               ),
             ],
