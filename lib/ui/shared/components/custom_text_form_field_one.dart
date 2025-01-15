@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tb_clinic/utils/config/app_color.dart';
+import 'package:tb_clinic/utils/config/app_image.dart';
 import 'package:tb_clinic/utils/config/app_style.dart';
 
 class CustomTextFormFieldOne extends StatelessWidget {
@@ -10,8 +12,10 @@ class CustomTextFormFieldOne extends StatelessWidget {
   final int maxLines;
   final bool obscureText;
   final bool suffixIconVisibility;
+  final bool prefixIconVisibility;
   final bool counterTextEnabled;
   final VoidCallback? suffixIconAction;
+  final VoidCallback? prefixIconAction;
 
   const CustomTextFormFieldOne({
     super.key,
@@ -22,8 +26,10 @@ class CustomTextFormFieldOne extends StatelessWidget {
     this.maxLines = 1,
     this.obscureText = false,
     this.suffixIconVisibility = false,
+    this.prefixIconVisibility = false,
     this.counterTextEnabled = false,
     this.suffixIconAction,
+    this.prefixIconAction,
   });
 
   @override
@@ -43,15 +49,23 @@ class CustomTextFormFieldOne extends StatelessWidget {
           ),
         ),
         hintText: hintText,
-        suffixIcon: Visibility(
-          visible: suffixIconVisibility,
-          child: IconButton(
-            icon: Icon(
-              obscureText ? Icons.visibility : Icons.visibility_off,
-            ),
-            onPressed: suffixIconAction,
-          ),
-        ),
+        prefixIcon: prefixIconVisibility
+            ? IconButton(
+                icon: SvgPicture.asset(
+                  AppImage().searchIcon,
+                  color: Colors.black,
+                ),
+                onPressed: suffixIconAction,
+              )
+            : null,
+        suffixIcon: suffixIconVisibility
+            ? IconButton(
+                icon: Icon(
+                  obscureText ? Icons.visibility : Icons.visibility_off,
+                ),
+                onPressed: suffixIconAction,
+              )
+            : null,
         counterText: !counterTextEnabled ? "" : null,
       ),
     );

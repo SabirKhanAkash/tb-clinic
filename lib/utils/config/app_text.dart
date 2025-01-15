@@ -73,6 +73,7 @@ class AppText {
   final registerHeadingTwo = "Last Name";
   final registerHintFive = "Re enter password";
   final registerHintFour = "Enter password";
+  final searchPatientHint = "Search a Patient";
   final registerHintOne = "Enter your first name";
   final profileHintOne = "Enter your name";
   final profileHintTwo = "Enter your phone number";
